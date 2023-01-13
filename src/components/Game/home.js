@@ -187,7 +187,7 @@ class RollDice extends Component {
             </div>
 
             <div id="box2" className='grid grid-rows-3 gap-4 items-center border-white border-4'>
-              <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 1</h1>
+              <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 2</h1>
               <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
                 <div className='border-black border-2 bg-red-500' id="profile2">
                   <CgProfile size={90}></CgProfile>
@@ -213,7 +213,7 @@ class RollDice extends Component {
 
           </div>
 
-          <div className='RollDice-container grid grid-rows-2 -mt-28'>
+          <div className='RollDice-container grid grid-rows-2 -mt-24'>
             <Die face={die} rolling={rolling} />
             <button className={handleBtn}
               disabled={this.state.rolling}
