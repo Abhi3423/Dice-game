@@ -7,22 +7,37 @@ export var name1value , gender1value ,age1value, name2value, gender2value, age2v
 function submitplayer1()
 {
     document.getElementById("player1").style.display = "none";
+    
     const form1 = document.getElementById("form1")
     const name1 = document.getElementById("name1")
+    name1.required = "true"
     const gender1 = document.getElementById("gender1")
     const age1 = document.getElementById("age1")
-
-    form1.addEventListener('submit', function(e){
-        e.preventDefault();
-
-        name1value = name1.value;
-        gender1value = gender1.value;
-        age1value =  age1.value;
-
-        sessionStorage.setItem('player1obj',JSON.stringify({n1: name1value, g1: gender1value, a1: age1value}))
-    })
-
-    console.log(JSON.parse(sessionStorage.getItem('player1obj')))
+    
+    var isValidForm1 = document.forms['form1'].checkValidity();
+    console.log(isValidForm1)
+    if (isValidForm1)
+    {
+        console.log("lskdd")
+        form1.addEventListener('submit', function(e){
+            e.preventDefault();
+    
+            name1value = name1.value;
+            gender1value = gender1.value;
+            age1value =  age1.value;
+    
+            sessionStorage.setItem('player1obj',JSON.stringify({n1: name1value, g1: gender1value, a1: age1value}))
+        })
+    
+        console.log(JSON.parse(sessionStorage.getItem('player1obj'))
+        )
+    }
+    else
+    {
+        
+        console.log("okaok")
+        return false;
+    }
 
 }
 
@@ -30,7 +45,7 @@ function submitplayer1()
 
 function submitplayer2()
 {
-    document.getElementById("player1").style.display = "none";
+    document.getElementById("player2").style.display = "none";
     const form2 = document.getElementById("form2")
     const name2 = document.getElementById("name2")
     const gender2 = document.getElementById("gender2")
@@ -90,24 +105,24 @@ function Landing() {
                             <br></br>
                             Full Name
                             <br></br>
-                            <input id="name1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' name="name" autoComplete="off" required />
+                            <input id="name1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' autoComplete="off" pattern=".{3,9}"/>
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Gender
                             <br></br>
-                            <input id="gender1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' name="name" autoComplete="off" required />
+                            <input id="gender1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' autoComplete="off" pattern=".{4,6}"/>
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Age
                             <br></br>
-                            <input id="age1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' name="Number" autoComplete="off" required />
+                            <input id="age1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' autoComplete="off" max="99" min="8" required/>
                         </label>
                         <br></br><br></br>
-                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer1(); setOpenPlayer2(true); }}><input type="submit" value="Submit" /></button>
+                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer1(); setOpenPlayer2(true); }} type="button"><input type="submit" value="Submit" /></button>
                         <br></br><br></br>
                     </form>
                 </div>)}
@@ -120,24 +135,24 @@ function Landing() {
                             <br></br>
                             Full Name
                             <br></br>
-                            <input id="name2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' name="name" autoComplete="off" required />
+                            <input id="name2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' name="name" autoComplete="off" pattern=".{3,9}" required />
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Gender
                             <br></br>
-                            <input id="gender2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' name="name" autoComplete="off" required />
+                            <input id="gender2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' name="name" autoComplete="off" pattern=".{4,6}" required />
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Age
                             <br></br>
-                            <input id="age2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' name="Number" autoComplete="off" required />
+                            <input id="age2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' name="Number" autoComplete="off" max="99" min="8" required />
                         </label>
                         <br></br><br></br>
-                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer2(); navigateTohome();}}><input type="submit" value="Submit" /></button>
+                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer2(); navigateTohome();}} type="submit"><input type="submit" value="Submit" /></button>
                         <br></br><br></br>
                     </form>
                 </div>)}
