@@ -1,6 +1,5 @@
 import React, { Component, useNavigate } from 'react'
 import Confetti from 'react-confetti'
-import useWindowSize from 'react-use/lib/useWindowSize'
 
 import './RollDice.css'
 import Die from './Die.js'
@@ -22,9 +21,8 @@ function check(p1, p2) {
     w1 += 1
     won = name1value
     document.getElementById("main1").style.filter = "opacity(0.4)"
-    document.getElementById("main1").style.display = "none"
+    document.getElementById("main").style.display = "none"
     document.getElementById("main2").style.filter = "opacity(0.4)"
-    document.getElementById("main2").style.display = "none"
     document.getElementById("winpage").style.display = "grid"
     window.alert("player1 wins!!")
   }
@@ -35,21 +33,20 @@ function check(p1, p2) {
     w2 += 1
     won = name2value
     document.getElementById("main1").style.filter = "opacity(0.4)"
-    document.getElementById("main1").style.display = "none"
+    document.getElementById("main").style.display = "none"
     document.getElementById("main2").style.filter = "opacity(0.4)"
-    document.getElementById("main2").style.display = "none"
     document.getElementById("winpage").style.display = "grid"
     window.alert("player2 wins!")
   }
 }
 
 
-
 function again() {
 
-  document.getElementById("main1").style.display = "grid"
-  document.getElementById("main2").style.display = "grid"
+  document.getElementById("main").style.display = "block"
   document.getElementById("winpage").style.display = "none"
+  document.getElementById("main1").style.filter = "opacity(1)"
+  document.getElementById("main2").style.filter = "opacity(1)"
 
 }
 
@@ -163,6 +160,7 @@ class RollDice extends Component {
 
     return (
       <div className=''>
+        <div className='' id="main">
         <div className='RollDice grid grid-rows-2 lg:hidden' id="main1">
 
           <div className=' grid grid-cols-2 items-start mt-12 h-96 font-sans'>
@@ -295,6 +293,7 @@ class RollDice extends Component {
           </div>
 
         </div>
+        </div>
 
         <div className='hidden lg:hidden grid-rows-2 inset-2/4 items-center justify-center RollDice overflow-hidden' id="winpage">
           <Confetti
@@ -307,7 +306,7 @@ class RollDice extends Component {
             <span className='text-2xl md:text-3xl self-center'>{won} Wins !!</span>
           </div>
           <div className='grid grid-rows-2 self-center sm:grid-cols-2 gap-11 sm:self-start mt-8'>
-            <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12'>PLAY AGAIN!!</button>
+            <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12' onClick={() => again()}>PLAY AGAIN!!</button>
             <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12'>NEW GAME</button>
           </div>
         
