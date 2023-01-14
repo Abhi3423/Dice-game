@@ -1,4 +1,4 @@
-import React, { Component, useNavigate } from 'react'
+import React, { Component} from 'react'
 import Confetti from 'react-confetti'
 import { Navigate } from "react-router-dom";
 
@@ -17,11 +17,15 @@ var won = ""
 function check(p1, p2) {
 
   if (p1 >= 20) {
-
+      
     setTimeout(() => {
       player1 = player2 = 0
       w1 += 1
-      won = name1value
+    }, 980);
+
+    won = name1value
+
+    setTimeout(() => {
       document.getElementById("main1").style.filter = "opacity(0.4)"
       document.getElementById("main").style.display = "none"
       document.getElementById("main2").style.filter = "opacity(0.4)"
@@ -30,11 +34,15 @@ function check(p1, p2) {
   }
 
   if (p2 >= 20) {
-
+    
     setTimeout(() => {
       player1 = player2 = 0
       w2 += 1
-      won = name2value
+    }, 980);
+    
+    won = name2value
+
+    setTimeout(() => {
       document.getElementById("main1").style.filter = "opacity(0.4)"
       document.getElementById("main").style.display = "none"
       document.getElementById("main2").style.filter = "opacity(0.4)"
@@ -45,7 +53,8 @@ function check(p1, p2) {
 
 
 function again() {
-
+  
+  player1 = player2 = 0
   document.getElementById("main").style.display = "block"
   document.getElementById("winpage").style.display = "none"
   document.getElementById("main1").style.filter = "opacity(1)"
