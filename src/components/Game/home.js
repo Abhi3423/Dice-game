@@ -4,7 +4,6 @@ import { Navigate } from "react-router-dom";
 
 import './RollDice.css'
 import Die from './Die.js'
-import Error from './../Error/Error'
 import { CgProfile } from "react-icons/cg"
 
 var diev, player1 = 0, player2 = 0;
@@ -186,6 +185,7 @@ class RollDice extends Component {
 
     return (
       <div className=''>
+        
         <div className='' id="main">
           <div className='RollDice grid grid-rows-2 lg:hidden' id="main1">
 
@@ -339,8 +339,6 @@ class RollDice extends Component {
           </div>
 
         </div>
-
-        <div className='text-5xl text-black font-bold' id="error"></div>
 
       </div>
     )
