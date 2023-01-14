@@ -2,8 +2,6 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./landing.css";
 
-export var name1value, gender1value, age1value, name2value, gender2value, age2value = ""
-
 function submitplayer1() {
 
     document.getElementById("player1").style.display = "none";
@@ -16,11 +14,7 @@ function submitplayer1() {
     console.log(isValidForm1)
     if (isValidForm1) {
 
-        name1value = name1.value;
-        gender1value = gender1.value;
-        age1value = age1.value;
-
-        sessionStorage.setItem('player1obj', JSON.stringify({ n1: name1value, g1: gender1value, a1: age1value }))
+        sessionStorage.setItem('player1obj', JSON.stringify({ n1: name1.value, g1: gender1.value, a1: age1.value }))
         console.log(JSON.parse(sessionStorage.getItem('player1obj')))
     }
     else {
@@ -45,11 +39,7 @@ function submitplayer2() {
     console.log(isValidForm2)
     if (isValidForm2) {
 
-        name2value = name2.value;
-        gender2value = gender2.value;
-        age2value = age2.value;
-
-        sessionStorage.setItem('player2obj', JSON.stringify({ n2: name2value, g2: gender2value, a2: age2value }))
+        sessionStorage.setItem('player2obj', JSON.stringify({ n2: name2.value, g2: gender2.value, a2: age2.value }))
         console.log(JSON.parse(sessionStorage.getItem('player2obj')))
     }
     else {

@@ -1,27 +1,30 @@
-import React, { Component} from 'react'
+import React, { Component } from 'react'
 import Confetti from 'react-confetti'
 import { Navigate } from "react-router-dom";
 
 import './RollDice.css'
 import Die from './Die.js'
+import Error from './../Error/Error'
 import { CgProfile } from "react-icons/cg"
-import { name1value, gender1value, age1value, name2value, gender2value, age2value } from './../Landing/landing'
 
 var diev, player1 = 0, player2 = 0;
 var w1 = 0, w2 = 0;
 var count = 0, change = 0;
 var won = ""
+var player1dat = JSON.parse(sessionStorage.getItem('player1obj'))
+var player2dat = JSON.parse(sessionStorage.getItem('player2obj'))
+
 
 function check(p1, p2) {
 
   if (p1 >= 20) {
-      
+
     setTimeout(() => {
       player1 = player2 = 0
       w1 += 1
     }, 980);
 
-    won = name1value
+    won = "name1value"
 
     setTimeout(() => {
       document.getElementById("main1").style.filter = "opacity(0.4)"
@@ -32,13 +35,13 @@ function check(p1, p2) {
   }
 
   if (p2 >= 20) {
-    
+
     setTimeout(() => {
       player1 = player2 = 0
       w2 += 1
     }, 980);
 
-    won = name2value
+    won = "name2value"
 
     setTimeout(() => {
       document.getElementById("main1").style.filter = "opacity(0.4)"
@@ -51,7 +54,7 @@ function check(p1, p2) {
 
 
 function again() {
-  
+
   player1 = player2 = 0
   document.getElementById("main").style.display = "block"
   document.getElementById("winpage").style.display = "none"
@@ -62,7 +65,7 @@ function again() {
 
 
 class RollDice extends Component {
-
+  
   static defaultProps = {
     sides: ['one', 'two', 'three', 'four', 'five', 'six']
   }
@@ -82,6 +85,11 @@ class RollDice extends Component {
     this.player1_total = this.player1_total.bind(this)
     this.player2_total = this.player2_total.bind(this)
     this.newgame = this.newgame.bind(this)
+    // if(player1dat == null && player2dat == null){
+    //   // window.location.href = "/"
+    //   // window.location.reload(false)
+    //   console.log("HO gyaa")
+    // }
   }
 
   roll() {
@@ -173,6 +181,7 @@ class RollDice extends Component {
     const { die, rolling, homesubmitted } = this.state
     const width = window.innerWidth
     const height = window.innerHeight
+    console.log(window)
 
 
     return (
@@ -189,9 +198,9 @@ class RollDice extends Component {
                     <CgProfile size={90}></CgProfile>
                   </div>
                   <div className='grid grid-rows-3 font-semibold'>
-                    <span>{name1value}</span>
-                    <span>{gender1value}</span>
-                    <span>{age1value}</span>
+                    <span>{player1dat['n1']}</span>
+                    <span>{player1dat['g1']}</span>
+                    <span>{player1dat['a1']}</span>
                   </div>
                 </div>
 
@@ -214,9 +223,9 @@ class RollDice extends Component {
                     <CgProfile size={90}></CgProfile>
                   </div>
                   <div className='grid grid-rows-3 font-semibold'>
-                    <span>{name2value}</span>
-                    <span>{gender2value}</span>
-                    <span>{age2value}</span>
+                    <span>{player1dat['n1']}</span>
+                    <span>{player1dat['g1']}</span>
+                    <span>{player1dat['a1']}</span>
                   </div>
                 </div>
 
@@ -255,9 +264,9 @@ class RollDice extends Component {
                   <CgProfile size={140} className="ml-2"></CgProfile>
                 </div>
                 <div className='grid grid-rows-3 font-semibold'>
-                  <span>NAME: {name1value}</span>
-                  <span>GENDER: {gender1value}</span>
-                  <span>AGE: {age1value}</span>
+                  <span>NAME: {player1dat['n1']}</span>
+                  <span>GENDER: {player1dat['g1']}</span>
+                  <span>AGE: {player1dat['a1']}</span>
                 </div>
               </div>
 
@@ -291,9 +300,9 @@ class RollDice extends Component {
                   <CgProfile size={140} className="ml-2"></CgProfile>
                 </div>
                 <div className='grid grid-rows-3 font-semibold'>
-                  <span>NAME: {name2value}</span>
-                  <span>GENDER: {gender2value}</span>
-                  <span>AGE: {age2value}</span>
+                  <span>NAME: {player2dat['n2']}</span>
+                  <span>GENDER: {player2dat['g2']}</span>
+                  <span>AGE: {player2dat['a2']}</span>
                 </div>
               </div>
 
@@ -330,6 +339,8 @@ class RollDice extends Component {
           </div>
 
         </div>
+
+        <div className='text-5xl text-black font-bold' id="error"></div>
 
       </div>
     )
