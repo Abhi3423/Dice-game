@@ -50,7 +50,6 @@ function again() {
   document.getElementById("main1").style.display = "grid"
   document.getElementById("main2").style.display = "grid"
   document.getElementById("winpage").style.display = "none"
-  console.log("chutiya")
 
 }
 
@@ -93,12 +92,17 @@ class RollDice extends Component {
         document.getElementById("box1").style.borderColor = "white"
         document.getElementById("profile2").style.backgroundColor = "green"
         document.getElementById("profile1").style.backgroundColor = "red"
+        document.getElementById("mprofile2").style.backgroundColor = "green"
+        document.getElementById("mprofile1").style.backgroundColor = "red"
       }
       else {
         document.getElementById("box1").style.borderColor = "green"
         document.getElementById("box2").style.borderColor = "white"
         document.getElementById("profile1").style.backgroundColor = "green"
         document.getElementById("profile2").style.backgroundColor = "red"
+        document.getElementById("mprofile1").style.backgroundColor = "green"
+        document.getElementById("mprofile2").style.backgroundColor = "red"
+        
       }
     }, 1000)
 
@@ -153,6 +157,8 @@ class RollDice extends Component {
 
     const handleBtn = this.state.rolling ? 'bg-gray-400 rounded-lg text-white text-2xl w-9/12 h-20 cursor-pointer justify-self-center self-center -mt-24 ml-4 cursor-none' : 'bg-black rounded-lg text-white text-2xl w-9/12 h-20 cursor-pointer justify-self-center self-center -mt-24 ml-4'
     const { die, rolling } = this.state
+    const width = window.innerWidth
+    const height = window.innerHeight
 
 
     return (
@@ -164,7 +170,7 @@ class RollDice extends Component {
             <div id="box1" className='grid grid-rows-3 gap-4 items-center border-green-700 border-4'>
               <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 1</h1>
               <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
-                <div className='border-black border-2 bg-green-600' id="profile1">
+                <div className='border-black border-2 bg-green-600' id="mprofile1">
                   <CgProfile size={90}></CgProfile>
                 </div>
                 <div className='grid grid-rows-3 font-semibold'>
@@ -189,7 +195,7 @@ class RollDice extends Component {
             <div id="box2" className='grid grid-rows-3 gap-4 items-center border-white border-4'>
               <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 2</h1>
               <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
-                <div className='border-black border-2 bg-red-500' id="profile2">
+                <div className='border-black border-2 bg-red-500' id="mprofile2">
                   <CgProfile size={90}></CgProfile>
                 </div>
                 <div className='grid grid-rows-3 font-semibold'>
@@ -225,7 +231,7 @@ class RollDice extends Component {
 
         </div>
 
-        <div className='hidden RollDice lg:grid grid-cols-3 gap-10 justify-items-stretch ' id="main2">
+        <div className='hidden RollDice lg:grid grid-cols-3 gap-10 justify-items-stretch h-96 overflow-y-hidden' id="main2">
           <div className='grid grid-rows-2 items-center border-black border-8 w-4/5'>
 
             <div className='grid grid-rows-3 gap-4 justify-self-center mt-8 text-xl'>
@@ -240,7 +246,7 @@ class RollDice extends Component {
               </div>
             </div>
 
-            <div className='grid grid-cols-2 justify-self-center text-lg gap-6 -mt-28'>
+            <div className='grid grid-cols-2 justify-self-center text-lg gap-5 -mt-28'>
               <div className='flex flex-col'>
                 <h1 className='font-bold self-center'>POINTS</h1>
                 <span className='font-semibold ml-3 self-center text-7xl'>{player1}</span>
@@ -276,13 +282,13 @@ class RollDice extends Component {
               </div>
             </div>
 
-            <div className='grid grid-cols-2 justify-self-center text-xl gap-8 -mt-28'>
+            <div className='grid grid-cols-2 justify-self-center text-lg gap-5 -mt-28'>
               <div className='flex flex-col'>
                 <h1 className='font-bold self-center'>POINTS</h1>
                 <span className='font-semibold ml-3 self-center text-7xl'>{player2}</span>
               </div>
               <div className='flex flex-col self-center'>
-                <h1 className='font-bold text-xl self-center'>TOTAL WINS</h1>
+                <h1 className='font-bold text-lg self-center'>TOTAL WINS</h1>
                 <span className='text-7xl font-semibold ml-3 whitespace-nowrap self-center'>{w2}</span>
               </div>
             </div>
@@ -290,18 +296,19 @@ class RollDice extends Component {
 
         </div>
 
-        <div className='hidden lg:hidden grid-rows-2 inset-2/4 items-center justify-center RollDice' id="winpage">
+        <div className='hidden lg:hidden grid-rows-2 inset-2/4 items-center justify-center RollDice overflow-hidden' id="winpage">
           <Confetti
-            width={1024}
-            height={1024}
+            width= {width}
+            height={height}
+            className="overflow-hidden h-full w-full"
           />
           <div className='w-full h-32 self-end flex flex-row gap-10'>
             <CgProfile size={120}></CgProfile>
-            <span className='text-3xl self-center'>{won} Wins !!</span>
+            <span className='text-2xl md:text-3xl self-center'>{won} Wins !!</span>
           </div>
-          <div className='grid grid-rows-2 sm:grid-cols-2 gap-11 self-start mt-8'>
+          <div className='grid grid-rows-2 self-center sm:grid-cols-2 gap-11 sm:self-start mt-8'>
             <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12'>PLAY AGAIN!!</button>
-            <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md'>NEW GAME</button>
+            <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12'>NEW GAME</button>
           </div>
         
         </div>
