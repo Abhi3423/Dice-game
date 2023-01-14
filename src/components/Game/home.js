@@ -221,9 +221,9 @@ class RollDice extends Component {
                     <CgProfile size={90}></CgProfile>
                   </div>
                   <div className='grid grid-rows-3 font-semibold'>
-                    <span>{player1dat['n1']}</span>
-                    <span>{player1dat['g1']}</span>
-                    <span>{player1dat['a1']}</span>
+                    <span>{player2dat['n2']}</span>
+                    <span>{player2dat['g2']}</span>
+                    <span>{player2dat['a2']}</span>
                   </div>
                 </div>
 
