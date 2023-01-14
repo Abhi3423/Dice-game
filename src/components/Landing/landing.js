@@ -74,7 +74,7 @@ function Landing() {
     }
 
     return (
-        <div className='flex items-center justify-center' style={{ "height": "100vh" }}>
+        <div className='flex items-center justify-center' style={{ "height": "100vh" }} id="land">
 
             <div>
                 <button id="play" onClick={() => { set(); setOpenPlayer1(true); }} className=' block text-white bg-black rounded-lg w-32 h-20'>PLAY NOW!!!</button>

@@ -5,7 +5,12 @@ body {
     /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #38ef7d, #11998e);
     /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 
+}
+
+#land{
+    background-image: url("background.jpg");
 }
 
 #play{
@@ -15,12 +20,16 @@ body {
     animation-direction: alternate;
 }
 
-#player{
-    -webkit-animation: slide 0.5s forwards;
-    -webkit-animation-delay: 9.2s;
-    animation: slide 0.5s forwards;
-    animation-delay: 9.2s;
+#player1{
 
+    animation-duration: 2s;
+    animation-name: moveDown;
+}
+
+#player2{
+
+    animation-duration: 2s;
+    animation-name: moveDown;
 }
 
 @keyframes bounce{
@@ -28,15 +37,12 @@ body {
     to { transform: translate3d(0, 20px, 0);}
 }
 
-
-@-webkit-keyframes slide {
-    100% {
-        top: 0;
+@keyframes moveDown {
+    from {
+      transform: translateY(-150px);
     }
-}
-
-@keyframes slide {
-    100% {
-        top: 0;
+    to {
+      transform: translateY(10px);
     }
-}
+  }
+

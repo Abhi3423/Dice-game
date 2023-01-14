@@ -182,10 +182,8 @@ class RollDice extends Component {
     const height = window.innerHeight
     console.log(window)
 
-
     return (
       <div className=''>
-        
         <div className='' id="main">
           <div className='RollDice grid grid-rows-2 lg:hidden' id="main1">
 
