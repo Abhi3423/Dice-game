@@ -2,40 +2,30 @@ import { React, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import "./landing.css";
 
-export var name1value , gender1value ,age1value, name2value, gender2value, age2value = ""
+export var name1value, gender1value, age1value, name2value, gender2value, age2value = ""
 
-function submitplayer1()
-{
+function submitplayer1() {
+
     document.getElementById("player1").style.display = "none";
-    
-    const form1 = document.getElementById("form1")
+
     const name1 = document.getElementById("name1")
-    name1.required = "true"
     const gender1 = document.getElementById("gender1")
     const age1 = document.getElementById("age1")
-    
+
     var isValidForm1 = document.forms['form1'].checkValidity();
     console.log(isValidForm1)
-    if (isValidForm1)
-    {
-        console.log("lskdd")
-        form1.addEventListener('submit', function(e){
-            e.preventDefault();
-    
-            name1value = name1.value;
-            gender1value = gender1.value;
-            age1value =  age1.value;
-    
-            sessionStorage.setItem('player1obj',JSON.stringify({n1: name1value, g1: gender1value, a1: age1value}))
-        })
-    
-        console.log(JSON.parse(sessionStorage.getItem('player1obj'))
-        )
+    if (isValidForm1) {
+
+        name1value = name1.value;
+        gender1value = gender1.value;
+        age1value = age1.value;
+
+        sessionStorage.setItem('player1obj', JSON.stringify({ n1: name1value, g1: gender1value, a1: age1value }))
+        console.log(JSON.parse(sessionStorage.getItem('player1obj')))
     }
-    else
-    {
-        
-        console.log("okaok")
+    else {
+
+        console.log("false")
         return false;
     }
 
@@ -43,26 +33,30 @@ function submitplayer1()
 
 
 
-function submitplayer2()
-{
+function submitplayer2() {
+
     document.getElementById("player2").style.display = "none";
-    const form2 = document.getElementById("form2")
+
     const name2 = document.getElementById("name2")
     const gender2 = document.getElementById("gender2")
     const age2 = document.getElementById("age2")
 
-    form2.addEventListener('submit', function(e2) {
-        e2.preventDefault();
+    var isValidForm2 = document.forms['form2'].checkValidity();
+    console.log(isValidForm2)
+    if (isValidForm2) {
 
         name2value = name2.value;
         gender2value = gender2.value;
-        age2value =  age2.value;
+        age2value = age2.value;
 
-        sessionStorage.setItem('player2obj',JSON.stringify({n2: name2value, g2: gender2value, a2: age2value}))
-    })
+        sessionStorage.setItem('player2obj', JSON.stringify({ n2: name2value, g2: gender2value, a2: age2value }))
+        console.log(JSON.parse(sessionStorage.getItem('player2obj')))
+    }
+    else {
 
-    console.log(JSON.parse(sessionStorage.getItem('player2obj')))
-
+        console.log("false")
+        return false;
+    }
 }
 
 
@@ -73,17 +67,16 @@ function Landing() {
 
     const navigateTohome = () => {
 
-       setTimeout(() => {
-        navigate('/home');
-       }, 100);
+        setTimeout(() => {
+            navigate('/home');
+        }, 100);
     };
+
+    const submit1 = (e) => { e.preventDefault(); submitplayer1(); setOpenPlayer2(true); }
+    const submit2 = (e) => {e.preventDefault(); submitplayer2(); navigateTohome(); }
 
     const [isOpenPlayer1, setOpenPlayer1] = useState(false);
     const [isOpenPlayer2, setOpenPlayer2] = useState(false);
-    // let savePlayer1 = () => {
-    //     setOpenPlayer2(true)
-    // }
-
 
     function set() {
 
@@ -100,29 +93,29 @@ function Landing() {
             {isOpenPlayer1 && (
                 <div id="player1" className='text-xl text-black font-bold border-4 border-white rounded-lg items-center justify-center bg-white'>
                     <h1 className='ml-16 mt-4'> PLAYER 1 DETAILS </h1>
-                    <form className='ml-16' id="form1">
+                    <form className='ml-16' id="form1" onSubmit={submit1}>
                         <label>
                             <br></br>
-                            Full Name
+                            Name
                             <br></br>
-                            <input id="name1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' autoComplete="off" pattern=".{3,9}"/>
+                            <input id="name1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' autoComplete="off" pattern=".{3,11}" required />
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Gender
                             <br></br>
-                            <input id="gender1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' autoComplete="off" pattern=".{4,6}"/>
+                            <input id="gender1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="gender" placeholder='Enter gender' autoComplete="off" pattern=".{4,6}" required />
                         </label>
                         <br></br>
                         <label>
                             <br></br>
                             Age
                             <br></br>
-                            <input id="age1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' autoComplete="off" max="99" min="8" required/>
+                            <input id="age1" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' autoComplete="off" max="99" min="8" required />
                         </label>
                         <br></br><br></br>
-                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer1(); setOpenPlayer2(true); }} type="button"><input type="submit" value="Submit" /></button>
+                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' type="button"><input className='cursor-pointer' type="submit" value="Submit" /></button>
                         <br></br><br></br>
                     </form>
                 </div>)}
@@ -130,12 +123,12 @@ function Landing() {
             {isOpenPlayer2 && (
                 <div id="player2" className='text-xl text-black font-bold border-4 border-white rounded-lg items-center justify-center bg-white'>
                     <h1 className='ml-16 mt-4'> PLAYER 2 DETAILS </h1>
-                    <form className='ml-16' id="form2">
+                    <form className='ml-16' id="form2" onSubmit={submit2}>
                         <label>
                             <br></br>
-                            Full Name
+                            Name
                             <br></br>
-                            <input id="name2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' name="name" autoComplete="off" pattern=".{3,9}" required />
+                            <input id="name2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="text" placeholder='Your Name' name="name" autoComplete="off" pattern=".{3,11}" required />
                         </label>
                         <br></br>
                         <label>
@@ -152,7 +145,7 @@ function Landing() {
                             <input id="age2" className='border-2 border-gray-300 border-solid w-8/12 mt-2 indent-2' style={{ "height": "4vh" }} type="number" placeholder='Enter age' name="Number" autoComplete="off" max="99" min="8" required />
                         </label>
                         <br></br><br></br>
-                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' onClick={() => { submitplayer2(); navigateTohome();}} type="submit"><input type="submit" value="Submit" /></button>
+                        <button className='bg-black text-white rounded-lg w-2/5 h-12 ml-8' type="submit"><input className='cursor-pointer' type="submit" value="Submit" /></button>
                         <br></br><br></br>
                     </form>
                 </div>)}

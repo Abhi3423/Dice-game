@@ -7,8 +7,6 @@ import Die from './Die.js'
 import { CgProfile } from "react-icons/cg"
 import { name1value, gender1value, age1value, name2value, gender2value, age2value } from './../Landing/landing'
 
-
-console.log(name2value, gender2value, age2value)
 var diev, player1 = 0, player2 = 0;
 var w1 = 0, w2 = 0;
 var count = 0, change = 0;
@@ -39,7 +37,7 @@ function check(p1, p2) {
       player1 = player2 = 0
       w2 += 1
     }, 980);
-    
+
     won = name2value
 
     setTimeout(() => {
@@ -186,7 +184,7 @@ class RollDice extends Component {
 
               <div id="box1" className='grid grid-rows-3 gap-4 items-center border-4 border-green-700'>
                 <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 1</h1>
-                <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
+                <div className='grid grid-cols-2 gap-2 sm:gap-4 justify-self-center text-xl'>
                   <div className='border-black border-2' style={{ "backgroundColor": "#0BCB25" }} id="mprofile1">
                     <CgProfile size={90}></CgProfile>
                   </div>
@@ -211,7 +209,7 @@ class RollDice extends Component {
 
               <div id="box2" className='grid grid-rows-3 gap-4 items-center border-white border-4'>
                 <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 2</h1>
-                <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
+                <div className='grid grid-cols-2 gap-2 sm:gap-4 justify-self-center text-xl'>
                   <div className='border-black border-2 bg-red-600' id="mprofile2">
                     <CgProfile size={90}></CgProfile>
                   </div>
