@@ -18,26 +18,28 @@ function check(p1, p2) {
 
   if (p1 >= 20) {
 
-    player1 = player2 = 0
-    w1 += 1
-    won = name1value
-    document.getElementById("main1").style.filter = "opacity(0.4)"
-    document.getElementById("main").style.display = "none"
-    document.getElementById("main2").style.filter = "opacity(0.4)"
-    document.getElementById("winpage").style.display = "grid"
-    window.alert("player1 wins!!")
+    setTimeout(() => {
+      player1 = player2 = 0
+      w1 += 1
+      won = name1value
+      document.getElementById("main1").style.filter = "opacity(0.4)"
+      document.getElementById("main").style.display = "none"
+      document.getElementById("main2").style.filter = "opacity(0.4)"
+      document.getElementById("winpage").style.display = "grid"
+    }, 1200);
   }
 
   if (p2 >= 20) {
 
-    player1 = player2 = 0
-    w2 += 1
-    won = name2value
-    document.getElementById("main1").style.filter = "opacity(0.4)"
-    document.getElementById("main").style.display = "none"
-    document.getElementById("main2").style.filter = "opacity(0.4)"
-    document.getElementById("winpage").style.display = "grid"
-    window.alert("player2 wins!")
+    setTimeout(() => {
+      player1 = player2 = 0
+      w2 += 1
+      won = name2value
+      document.getElementById("main1").style.filter = "opacity(0.4)"
+      document.getElementById("main").style.display = "none"
+      document.getElementById("main2").style.filter = "opacity(0.4)"
+      document.getElementById("winpage").style.display = "grid"
+    }, 1200);
   }
 }
 
@@ -66,7 +68,7 @@ class RollDice extends Component {
     this.state = {
       die: 'one',
       rolling: false,
-      homesubmitted : false,
+      homesubmitted: false,
     }
     this.roll = this.roll.bind(this)
     this.roll1 = this.roll1.bind(this)
@@ -152,16 +154,16 @@ class RollDice extends Component {
 
   }
 
-  newgame(){
-    this.setState({homesubmitted: true});
-    setTimeout(() => {window.location.reload(false)},100) 
+  newgame() {
+    this.setState({ homesubmitted: true });
+    setTimeout(() => { window.location.reload(false) }, 100)
   }
 
   render() {
 
 
     const handleBtn = this.state.rolling ? 'bg-gray-400 rounded-lg text-white text-2xl w-9/12 h-20 cursor-pointer justify-self-center self-center -mt-24 ml-4 cursor-none' : 'bg-black rounded-lg text-white text-2xl w-9/12 h-20 cursor-pointer justify-self-center self-center -mt-24 ml-4'
-    const { die, rolling, homesubmitted} = this.state
+    const { die, rolling, homesubmitted } = this.state
     const width = window.innerWidth
     const height = window.innerHeight
 
@@ -176,7 +178,7 @@ class RollDice extends Component {
               <div id="box1" className='grid grid-rows-3 gap-4 items-center border-4 border-green-700'>
                 <h1 className='text-black font-bold text-4xl justify-self-center'>PLAYER 1</h1>
                 <div className='grid grid-cols-2 gap-4 justify-self-center text-xl'>
-                  <div className='border-black border-2' style={{"backgroundColor":"#0BCB25"}} id="mprofile1">
+                  <div className='border-black border-2' style={{ "backgroundColor": "#0BCB25" }} id="mprofile1">
                     <CgProfile size={90}></CgProfile>
                   </div>
                   <div className='grid grid-rows-3 font-semibold'>
@@ -242,7 +244,7 @@ class RollDice extends Component {
 
               <div className='grid grid-rows-3 gap-4 justify-self-center mt-8 text-xl'>
                 <h1 className='text-black font-bold text-4xl'>PLAYER 1</h1>
-                <div id="profile1" className='border-black border-2 -mt-12' style={{"backgroundColor":"#0BCB25"}}>
+                <div id="profile1" className='border-black border-2 -mt-12' style={{ "backgroundColor": "#0BCB25" }}>
                   <CgProfile size={140} className="ml-2"></CgProfile>
                 </div>
                 <div className='grid grid-rows-3 font-semibold'>
@@ -316,7 +318,7 @@ class RollDice extends Component {
           <div className='grid grid-rows-2 self-center sm:grid-cols-2 gap-11 sm:self-start -mt-20 ml-12 sm:mt-8 sm:ml-0'>
             <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12' onClick={() => again()}>PLAY AGAIN!!</button>
             <button className='bg-blue-500 hover:bg-green-600 text-white rounded-md w-40 h-12' onClick={() => this.newgame()}>
-                {homesubmitted && <Navigate to={"/"} />}
+              {homesubmitted && <Navigate to={"/"} />}
               NEW GAME</button>
           </div>
 
