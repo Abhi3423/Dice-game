@@ -10,7 +10,9 @@ body {
 }
 
 #land{
-    background-image: url("background.jpg");
+    background-image: url("./background.jpg");
+    background-size: cover;
+
 }
 
 #play{
@@ -22,13 +24,13 @@ body {
 
 #player1{
 
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-name: moveDown;
 }
 
 #player2{
 
-    animation-duration: 2s;
+    animation-duration: 1s;
     animation-name: moveDown;
 }
 
