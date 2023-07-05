@@ -1,5 +1,6 @@
 body {
     background: #11998e;
+    overflow: hidden;
     /* fallback for old browsers */
     background: -webkit-linear-gradient(to right, #38ef7d, #11998e);
     /* Chrome 10-25, Safari 5.1-6 */

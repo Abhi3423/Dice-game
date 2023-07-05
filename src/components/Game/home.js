@@ -329,7 +329,7 @@ class RollDice extends Component {
               <button className={handleBtn}
                 disabled={this.state.rolling}
                 onClick={this.roll1}>
-                {this.state.rolling ? 'Rolling' : 'Roll IT!'}
+                {this.state.rolling ? 'Rolling...' : 'Roll IT!'}
               </button>
             </div>
 
@@ -368,7 +368,7 @@ class RollDice extends Component {
               <button className={handleBtn}
                 disabled={this.state.rolling}
                 onClick={this.roll1}>
-                {this.state.rolling ? 'Rolling' : 'Roll IT!'}
+                {this.state.rolling ? 'Rolling...' : 'Roll IT!'}
               </button>
               <button className='bg-black text-white rounded-md w-44 h-16 ml-8 text-lg' onClick={() => this.endgame()}>
                 {homesubmitted && <Navigate to={"/"} />}
